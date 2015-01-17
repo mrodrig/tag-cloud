@@ -1,0 +1,38 @@
+{
+    "author": "mrodrig",
+    "name": "tagCloud",
+    "description": "Node Tag Cloud HTML Generator",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+    	"url": "http://github.com/mrodrig/tagCloud.git"
+    },
+    "main": "./lib/tagCloud.js",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --reporter spec"
+    },
+    "keywords": [
+        "tag",
+        "cloud",
+        "tagCloud",
+        "word",
+        "wordCloud",
+        "word cloud",
+        "tag cloud",
+        "generator",
+        "html",
+        "dom",
+        "text"
+    ],
+    "dependencies": {
+    	"underscore": "1.6.0"
+    },
+    "devDependencies": {
+        "mocha": "~1.14.0",
+        "should": "~2.0.2",
+        "async": "~0.2.9"
+    },
+    "engines": {
+    	"node": "*"
+    }
+}

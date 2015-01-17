@@ -1,9 +1,9 @@
 # Node Tag Cloud HTML Generator
 
-[![Build Status](https://travis-ci.org/mrodrig/tagCloud.svg?branch=master)](https://travis-ci.org/mrodrig/tagCloud)
-![David - Dependency Checker Icon](https://david-dm.org/mrodrig/tagCloud.png "tagCloud Dependency Status")
-[![NPM version](http://img.shields.io/npm/dm/tagCloud.svg)](https://www.npmjs.org/package/tagCloud)
-[![NPM version](https://img.shields.io/npm/v/tagCloud.svg)](https://www.npmjs.org/package/tagCloud)
+[![Build Status](https://travis-ci.org/mrodrig/tag-cloud.svg?branch=master)](https://travis-ci.org/mrodrig/tag-cloud)
+![David - Dependency Checker Icon](https://david-dm.org/mrodrig/tag-cloud.png "tag-cloud Dependency Status")
+[![NPM version](http://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
+[![NPM version](https://img.shields.io/npm/v/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 
 This node module will take an array of tags and counts and generate a Tag/Word Cloud.
 

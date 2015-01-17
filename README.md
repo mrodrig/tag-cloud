@@ -25,7 +25,7 @@ var tagCloud = require('tagCloud');
 
 * `array` - An array of JSON documents of the form {tagName: <String>, count: <Number>}
 * `callback` - A function of the form `function (err, html)`; This function will receive any errors and/or the HTML generated.
-* `options` - (Optional) A JSON document specifying any of {`DELIMITER`, `EOL`, `PARSE_CSV_NUMBERS`}
+* `options` - (Optional) A JSON document specifying any of the following fields:
   * `randomize` - Boolean - Indicates whether the tags should be shuffled before the Tag Cloud is generated.
   * `numBuckets` - Number - Number of buckets to utilize
 

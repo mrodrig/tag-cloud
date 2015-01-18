@@ -1,8 +1,8 @@
 {
     "author": "mrodrig",
-    "name": "tagCloud",
+    "name": "tag-cloud",
     "description": "Node Tag Cloud HTML Generator",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "repository": {
         "type": "git",
     	"url": "http://github.com/mrodrig/tagCloud.git"
@@ -34,5 +34,6 @@
     },
     "engines": {
     	"node": "*"
-    }
+    },
+    "license": "MIT"
 }

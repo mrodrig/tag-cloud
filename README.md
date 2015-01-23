@@ -10,13 +10,13 @@ This node module will take an array of tags and counts and generate a Tag/Word C
 ## Installation
 
 ```bash
-$ npm install tagCloud
+$ npm install tag-cloud
 ```
 
 ## Usage
 
 ```javascript
-var tagCloud = require('tagCloud');
+var tagCloud = require('tag-cloud');
 ```
 
 ### API
@@ -35,7 +35,7 @@ var tagCloud = require('tagCloud');
 
 ```javascript
 
-var tagCloud = require('./tagCloud');
+var tagCloud = require('tag-cloud');
 
 var tags = [
     {tagName: 'js', count: 5},

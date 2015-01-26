@@ -29,7 +29,7 @@ var tagCloud = require('tag-cloud');
   * `randomize` - Boolean - Indicates whether the tags should be shuffled before the Tag Cloud is generated. [Default: true]
   * `numBuckets` - Number - Number of buckets to utilize [Default: 10]
   * `htmlTag` - String - The HTML tag name (ie. 'span') that you would like to be used. [Default: 'span']
-  * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket'
+  * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
   * `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
 
 ##### tagCloud Example:

@@ -43,18 +43,55 @@ var tags = [
     {tagName: 'css', count: 9},
     {tagName: 'less', count: 13},
     {tagName: 'rest', count: 2}
-]
+];
 
+
+/* Option 1 */
 tagCloud.tagCloud(tags, function (err, data) {
     console.log(err, data);
-})
+});
 
+/* Option 2 */
+tagCloud.tagCloud(tags, function (err, data) {
+    console.log(err, data);
+}, {
+    randomize: false
+});
+
+var promise = require('bluebird');
+promise.promisifyAll(tagCloud);
+
+/* Option 3 */
+tagCloud.tagCloudAsync(tags)
+    .then( function (html) {
+        console.log(html);
+    })
+    .catch( function (err) {
+        console.log(err);
+    });
+
+/* Option 4 */
+tagCloud.tagCloudAsync(tags, {
+    randomize: false
+})
+    .then( function (html) {
+        console.log(html);
+    })
+    .catch( function (err) {
+        console.log(err);
+    });
 ```
 
-The above code prints out:
+Options 1 and 2 above both print out:
 
 ```html
 null '<span class="bucket2" >js</span><span class="bucket4" >css</span><span class="bucket6" >less</span><span class="bucket0" >rest</span>'
+```
+
+Options 3 and 4 above both print out:
+
+```html
+<span class="bucket2" >js</span><span class="bucket4" >css</span><span class="bucket6" >less</span><span class="bucket0" >rest</span>
 ```
 
 The HTML can then be styled with CSS as such:
@@ -80,5 +117,8 @@ No tests are currently added. These will be added soon.
 ## Features
 
 - HTML Tag Cloud Generation
+- Customizable HTML Classes
+- Ability to add additional attributes to each HTML entity created
+- Randomization to keep the tag cloud interesting
 - Classes of the form 'bucket1' to allow for easy CSS styling and customization
 - Ability to serve the generated HTML out via a route

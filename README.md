@@ -112,7 +112,11 @@ The HTML can then be styled with CSS as such:
 
 ## Tests
 
-No tests are currently added. These will be added soon.
+```bash
+$ npm test
+```
+
+_Note_: This requires `mocha`, `should`, `async`, and `underscore`.
 
 ## Features
 

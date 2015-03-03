@@ -31,6 +31,8 @@ var tagCloud = require('tag-cloud');
   * `htmlTag` - String - The HTML tag name (ie. 'span') that you would like to be used. [Default: 'span']
   * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
   * `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
+    * If you would like to customize one of the fields to include the tag's text in the value, just use {{tag}} which will be replaced by the actual tag.
+    * This can be used such as ```{href: 'http://google.com?q={{tag}}'}``` which will result in a link to Google with the query being the tag's text.
 
 ##### tagCloud Example:
 

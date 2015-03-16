@@ -7,7 +7,10 @@ var should = require('should'),
 var options = {
     randomize: false,
     classPrefix: 'tagCloud',
-    additionalAttributes: {},
+    additionalAttributes: {
+        href : { encode: true, value: 'http://google.com?q={{tag}}'},
+        title : '{{tag}}'
+    },
     numBuckets: 5,
     htmlTag: 'span'
 };

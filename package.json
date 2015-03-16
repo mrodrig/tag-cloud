@@ -2,7 +2,7 @@
     "author": "mrodrig",
     "name": "tag-cloud",
     "description": "Node Tag Cloud HTML Generator",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "repository": {
         "type": "git",
     	"url": "http://github.com/mrodrig/tag-cloud.git"

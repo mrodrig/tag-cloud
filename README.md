@@ -32,9 +32,9 @@ var tagCloud = require('tag-cloud');
   * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
   * `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
     * If you would like to customize one of the fields to include the tag's text in the value, just use {{tag}} which will be replaced by the actual tag.
-        * Example: ```javascript {href: 'http://google.com?q={{tag}}'}```
+        * Example: ```{href: 'http://google.com?q={{tag}}'}```
     * If your tags include special characters (ie. C#) and you need to use the tag in a URL, then you can specify the value as an Object
-        * Example: ```javascript { href : { encode : true, value: 'http://google.com?q={{tag}}' } } ```
+        * Example: ```{ href : { encode : true, value: 'http://google.com?q={{tag}}' } } ```
 
 ##### tagCloud Example:
 

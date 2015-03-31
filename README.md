@@ -114,6 +114,13 @@ The HTML can then be styled with CSS as such:
 }
 ```
 
+## Example
+
+Your tag cloud can be styled to look like this:
+![Tag Cloud Example](https://raw.githubusercontent.com/mrodrig/tag-cloud/master/demo/example.png)
+
+To see the HTML and CSS used to create this, please look at the [demo](https://github.com/mrodrig/tag-cloud/tree/master/demo).
+
 ## Tests
 
 ```bash

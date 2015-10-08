@@ -32,6 +32,7 @@ var tagCloudTests = function () {
         describe('Options Specified', function () {
             it('should convert no tags to an empty string', function(done) {
                 tagCloud.tagCloud(json_emptyTags, function(err, html) {
+                    if (err) { throw err; }
                     html.should.equal(html_emptyTags);
                     html.length.should.equal(0);
                     return done();
@@ -40,6 +41,7 @@ var tagCloudTests = function () {
 
             it('should convert a single tag in the array to a html', function(done) {
                 tagCloud.tagCloud(json_singleTag, function(err, html) {
+                    if (err) { throw err; }
                     html.should.equal(html_singleTag);
                     html.length.should.equal(html_singleTag.length);
                     return done();
@@ -48,6 +50,7 @@ var tagCloudTests = function () {
 
             it('should convert ten tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_tenTags, function(err, html) {
+                    if (err) { throw err; }
                     html.should.equal(html_tenTags);
                     html.length.should.equal(html_tenTags.length);
                     return done();
@@ -56,6 +59,7 @@ var tagCloudTests = function () {
 
             it('should convert twenty tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_twentyTags, function(err, html) {
+                    if (err) { throw err; }
                     html.should.equal(html_twentyTags);
                     html.length.should.equal(html_twentyTags.length);
                     return done();
@@ -64,6 +68,7 @@ var tagCloudTests = function () {
 
             it('should convert one hundred tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_oneHundredTags, function(err, html) {
+                    if (err) { throw err; }
                     html.should.equal(html_oneHundredTags);
                     html.length.should.equal(html_oneHundredTags.length);
                     return done();
@@ -76,6 +81,7 @@ var tagCloudTests = function () {
         describe('Options Un-specified', function (done) {
             it('should convert no tags to an empty string', function(done) {
                 tagCloud.tagCloud(json_emptyTags, function(err, html) {
+                    if (err) { throw err; }
                     html.length.should.equal(0);
                     return done();
                 }, options);
@@ -83,6 +89,7 @@ var tagCloudTests = function () {
 
             it('should convert a single tag in the array to a html', function(done) {
                 tagCloud.tagCloud(json_singleTag, function(err, html) {
+                    if (err) { throw err; }
                     html.length.should.equal(html_singleTag.length);
                     return done();
                 }, options);
@@ -90,6 +97,7 @@ var tagCloudTests = function () {
 
             it('should convert ten tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_tenTags, function(err, html) {
+                    if (err) { throw err; }
                     html.length.should.equal(html_tenTags.length);
                     return done();
                 }, options);
@@ -97,6 +105,7 @@ var tagCloudTests = function () {
 
             it('should convert twenty tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_twentyTags, function(err, html) {
+                    if (err) { throw err; }
                     html.length.should.equal(html_twentyTags.length);
                     return done();
                 }, options);
@@ -104,6 +113,7 @@ var tagCloudTests = function () {
 
             it('should convert one hundred tags in the array to html', function(done) {
                 tagCloud.tagCloud(json_oneHundredTags, function(err, html) {
+                    if (err) { throw err; }
                     html.length.should.equal(html_oneHundredTags.length);
                     return done();
                 }, options);
@@ -120,28 +130,28 @@ module.exports = {
                 async.parallel([
                         function(callback) {
                             fs.readFile('test/HTML/emptyTags.html', function(err, data) {
-                                if (err) callback(err);
+                                if (err) return callback(err);
                                 html_emptyTags = data.toString();
                                 callback(null);
                             });
                         },
                         function(callback) {
                             fs.readFile('test/HTML/singleTag.html', function(err, data) {
-                                if (err) callback(err);
+                                if (err) return callback(err);
                                 html_singleTag = data.toString();
                                 callback(null);
                             });
                         },
                         function(callback) {
                             fs.readFile('test/HTML/tenTags.html', function(err, data) {
-                                if (err) callback(err);
+                                if (err) return callback(err);
                                 html_tenTags = data.toString();
                                 callback(null);
                             });
                         },
                         function(callback) {
                             fs.readFile('test/HTML/twentyTags.html', function(err, data) {
-                                if (err) callback(err);
+                                if (err) return callback(err);
                                 html_twentyTags = data.toString();
                                 html_oneHundredTags = '';
                                 _.range(5).forEach(function() {

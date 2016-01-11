@@ -1,7 +1,7 @@
 # Node Tag Cloud HTML Generator
 
 [![Build Status](https://travis-ci.org/mrodrig/tag-cloud.svg?branch=master)](https://travis-ci.org/mrodrig/tag-cloud)
-![David - Dependency Checker Icon](https://david-dm.org/mrodrig/tag-cloud.png "tag-cloud Dependency Status")
+[![bitHound Dependencies](https://www.bithound.io/github/mrodrig/tag-cloud/badges/dependencies.svg)](https://www.bithound.io/github/mrodrig/tag-cloud/master/dependencies/npm)
 [![Downloads](http://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 [![NPM version](https://img.shields.io/npm/v/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 [![bitHound Score](https://www.bithound.io/github/mrodrig/tag-cloud/badges/score.svg)](https://www.bithound.io/github/mrodrig/tag-cloud)

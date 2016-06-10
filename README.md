@@ -31,6 +31,9 @@ var tagCloud = require('tag-cloud');
   * `numBuckets` - Number - Number of buckets to utilize [Default: 10]
   * `htmlTag` - String - The HTML tag name (ie. 'span') that you would like to be used. [Default: 'span']
   * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
+  * `replacements` - Array - An array of Documents which represent replacements that should occur on attributes.
+    * Each document should be of the form: `{ find: 'valueToBeReplaced', replace: 'valueToBeInserted' }`
+    * This allows additional custom values to be inserted into attributes for further customization (ie. specifying conditional filters in URLs)
   * `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
     * If you would like to customize one of the fields to include the tag's text in the value, just use {{tag}} which will be replaced by the actual tag.
         * Example: ```{href: 'http://google.com?q={{tag}}'}```

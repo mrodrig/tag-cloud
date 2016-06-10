@@ -11,6 +11,9 @@ var options = {
         href : { encode: true, value: 'http://google.com?q={{tag}}'},
         title : '{{tag}}'
     },
+    replacements: [
+        {find: '{filter}', replace: 'color=red'}
+    ],
     numBuckets: 5,
     htmlTag: 'span'
 };
@@ -23,6 +26,7 @@ var json_emptyTags      = require('./JSON/emptyTags'),
     html_emptyTags      = '',
     html_singleTag      = '',
     html_tenTags        = '',
+    html_tenTagsReplacements = '',
     html_twentyTags     = '',
     html_oneHundredTags = '';
 
@@ -71,6 +75,50 @@ var tagCloudTests = function () {
                     if (err) { throw err; }
                     html.should.equal(html_oneHundredTags);
                     html.length.should.equal(html_oneHundredTags.length);
+                    return done();
+                }, options);
+            });
+            
+            it('should convert no tags with custom replacements to blank html', function(done) {
+                var options = {
+                    randomize: false,
+                    classPrefix: 'tagCloud',
+                    additionalAttributes: {
+                        href : { encode: true, value: 'http://google.com?q={{tag}}&{filter}'},
+                        title : '{{tag}}'
+                    },
+                    replacements: [
+                        {find: '{filter}', replace: 'color=red'}
+                    ],
+                    numBuckets: 5,
+                    htmlTag: 'span'
+                };
+                tagCloud.tagCloud(json_emptyTags, function(err, html) {
+                    if (err) { throw err; }
+                    html.should.equal(html_emptyTags);
+                    html.length.should.equal(html_emptyTags.length);
+                    return done();
+                }, options);
+            });
+            
+            it('should convert tags with custom replacements to html', function(done) {
+                var options = {
+                    randomize: false,
+                    classPrefix: 'tagCloud',
+                    additionalAttributes: {
+                        href : { encode: true, value: 'http://google.com?q={{tag}}&{filter}'},
+                        title : '{{tag}}'
+                    },
+                    replacements: [
+                        {find: '{filter}', replace: 'color=red'}
+                    ],
+                    numBuckets: 5,
+                    htmlTag: 'span'
+                };
+                tagCloud.tagCloud(json_tenTags, function(err, html) {
+                    if (err) { throw err; }
+                    html.should.equal(html_tenTagsReplacements);
+                    html.length.should.equal(html_tenTagsReplacements.length);
                     return done();
                 }, options);
             });
@@ -146,6 +194,13 @@ module.exports = {
                             fs.readFile('test/HTML/tenTags.html', function(err, data) {
                                 if (err) return callback(err);
                                 html_tenTags = data.toString();
+                                callback(null);
+                            });
+                        },
+                        function(callback) {
+                            fs.readFile('test/HTML/tenTagsReplacements.html', function(err, data) {
+                                if (err) return callback(err);
+                                html_tenTagsReplacements = data.toString();
                                 callback(null);
                             });
                         },

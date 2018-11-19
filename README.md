@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/mrodrig/tag-cloud.svg?branch=master)](https://travis-ci.org/mrodrig/tag-cloud)
 [![Downloads](http://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 [![NPM version](https://img.shields.io/npm/v/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
-[![Maintainability](https://api.codeclimate.com/v1/badges/830bc7f29f61466986ac/maintainability)](https://codeclimate.com/github/mrodrig/tag-cloud/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7f915482db8fb7650731/maintainability)](https://codeclimate.com/github/mrodrig/tag-cloud/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/npm/tag-cloud/badge.svg)](https://snyk.io/test/npm/tag-cloud)
 
 ## Installation

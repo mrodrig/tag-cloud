@@ -1,12 +1,13 @@
-# Node Tag Cloud HTML Generator
+# tag-cloud - Node Tag Cloud HTML Generator
 
+**This node module will take an array of tags and counts and generate a Tag/Word Cloud.**
+
+[![Dependencies](https://img.shields.io/david/mrodrig/tag-cloud.svg?style=flat-square)](https://www.npmjs.org/package/tag-cloud)
 [![Build Status](https://travis-ci.org/mrodrig/tag-cloud.svg?branch=master)](https://travis-ci.org/mrodrig/tag-cloud)
-[![bitHound Dependencies](https://www.bithound.io/github/mrodrig/tag-cloud/badges/dependencies.svg)](https://www.bithound.io/github/mrodrig/tag-cloud/master/dependencies/npm)
 [![Downloads](http://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 [![NPM version](https://img.shields.io/npm/v/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
-[![bitHound Score](https://www.bithound.io/github/mrodrig/tag-cloud/badges/score.svg)](https://www.bithound.io/github/mrodrig/tag-cloud)
-
-This node module will take an array of tags and counts and generate a Tag/Word Cloud.
+[![Maintainability](https://api.codeclimate.com/v1/badges/7f915482db8fb7650731/maintainability)](https://codeclimate.com/github/mrodrig/tag-cloud/maintainability)
+[![Known Vulnerabilities](https://snyk.io/test/npm/tag-cloud/badge.svg)](https://snyk.io/test/npm/tag-cloud)
 
 ## Installation
 
@@ -17,12 +18,12 @@ $ npm install tag-cloud
 ## Usage
 
 ```javascript
-var tagCloud = require('tag-cloud');
+let tagCloud = require('tag-cloud');
 ```
 
 ### API
 
-#### tagCloud(array, callback, options)
+#### `tagCloud(array, callback, options)`
 
 * `array` - An array of JSON documents of the form {tagName: <String>, count: <Number>}
 * `callback` - A function of the form `function (err, html)`; This function will receive any errors and/or the HTML generated.
@@ -44,9 +45,9 @@ var tagCloud = require('tag-cloud');
 
 ```javascript
 
-var tagCloud = require('tag-cloud');
+let tagCloud = require('tag-cloud');
 
-var tags = [
+let tags = [
     {tagName: 'js', count: 5},
     {tagName: 'css', count: 9},
     {tagName: 'less', count: 13},
@@ -66,7 +67,7 @@ tagCloud.tagCloud(tags, function (err, data) {
     randomize: false
 });
 
-var promise = require('bluebird');
+let promise = require('bluebird');
 promise.promisifyAll(tagCloud);
 
 /* Option 3 */

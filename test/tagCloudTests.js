@@ -1,10 +1,10 @@
-var should = require('should'),
-    tagCloud = require('.././lib/tagCloud'),
+let should = require('should'),
+    tagCloud = require('../src/tagCloud'),
     fs = require('fs'),
     _ = require('underscore'),
     async = require('async');
 
-var options = {
+let options = {
     randomize: false,
     classPrefix: 'tagCloud',
     additionalAttributes: {
@@ -18,7 +18,7 @@ var options = {
     htmlTag: 'span'
 };
 
-var json_emptyTags      = require('./JSON/emptyTags'),
+let json_emptyTags      = require('./JSON/emptyTags'),
     json_singleTag      = require('./JSON/singleTag'),
     json_tenTags        = require('./JSON/tenTags'),
     json_twentyTags     = require('./JSON/twentyTags'),
@@ -30,7 +30,7 @@ var json_emptyTags      = require('./JSON/emptyTags'),
     html_twentyTags     = '',
     html_oneHundredTags = '';
 
-var tagCloudTests = function () {
+let tagCloudTests = function () {
     // We can check the HTML is equivalent since we specify randomize to be false
     describe('/lib/tagCloud.js', function () {
         describe('Options Specified', function () {
@@ -80,7 +80,7 @@ var tagCloudTests = function () {
             });
             
             it('should convert no tags with custom replacements to blank html', function(done) {
-                var options = {
+                let options = {
                     randomize: false,
                     classPrefix: 'tagCloud',
                     additionalAttributes: {
@@ -102,7 +102,7 @@ var tagCloudTests = function () {
             });
             
             it('should convert tags with custom replacements to html', function(done) {
-                var options = {
+                let options = {
                     randomize: false,
                     classPrefix: 'tagCloud',
                     additionalAttributes: {

@@ -1,4 +1,4 @@
-var tagCloudTests = require('./tagCloudTests');
+let tagCloudTests = require('./tagCloudTests');
 
 describe('tag-cloud Module', function() {
     tagCloudTests.runTests();

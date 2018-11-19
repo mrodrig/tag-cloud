@@ -2,12 +2,12 @@
     "author": "mrodrig",
     "name": "tag-cloud",
     "description": "Node Tag Cloud HTML Generator",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "repository": {
         "type": "git",
         "url": "http://github.com/mrodrig/tag-cloud.git"
     },
-    "main": "./lib/tagCloud.js",
+    "main": "./src/tagCloud.js",
     "scripts": {
         "test": "./node_modules/.bin/mocha --reporter spec"
     },
@@ -25,15 +25,15 @@
         "text"
     ],
     "dependencies": {
-        "underscore": "1.8.3"
+        "underscore": "1.9.1"
     },
     "devDependencies": {
-        "mocha": "3.3.0",
-        "should": "13.1.2",
-        "async": "2.5.0"
+        "mocha": "5.2.0",
+        "should": "13.2.3",
+        "async": "2.6.1"
     },
     "engines": {
-        "node": "*"
+        "node": ">=6"
     },
     "license": "MIT"
 }

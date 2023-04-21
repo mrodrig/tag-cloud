@@ -1,10 +1,30 @@
-test/
-.git*
+# Debug Logs
 npm-debug.log
-.travis.yml
+
+# Uncompiled Source Files
+src
+test
+
+# Node Modules
 node_modules/
 node_modules/*
+
+# Configuration Files
+.eslintrc*
+tsconfig*
+
+# Test/Coverage Files
 coverage/
 coverage/*
-demo
+.nycrc
+.nyc_output
+.nyc_output/*
+.coveralls.yml
+lib/test
+
+# Github Configuration Files
 _config.yml
+.git*
+
+# Extra documentation files
+upgrade_guides/*

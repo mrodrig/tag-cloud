@@ -7,7 +7,8 @@
         "type": "git",
         "url": "http://github.com/mrodrig/tag-cloud.git"
     },
-    "main": "./src/tagCloud.js",
+    "main": "./lib/tagCloud.js",
+    "types": "./lib/tagCloud.d.ts",
     "scripts": {
         "build": "npm run lint && npm run test && npm run compile",
         "compile": "tsc -p tsconfig.build.json",
@@ -29,9 +30,7 @@
         "dom",
         "text"
     ],
-    "dependencies": {
-        "underscore": "1.13.2"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@types/mocha": "10.0.1",
         "@types/node": "18.15.3",

@@ -2,12 +2,14 @@
 
 **This node module will take an array of tags and counts and generate a Tag/Word Cloud.**
 
-[![Dependencies](https://img.shields.io/david/mrodrig/tag-cloud.svg?style=flat-square)](https://www.npmjs.org/package/tag-cloud)
-[![Build Status](https://travis-ci.org/mrodrig/tag-cloud.svg?branch=master)](https://travis-ci.org/mrodrig/tag-cloud)
-[![Downloads](http://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
 [![NPM version](https://img.shields.io/npm/v/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7f915482db8fb7650731/maintainability)](https://codeclimate.com/github/mrodrig/tag-cloud/maintainability)
-[![Known Vulnerabilities](https://snyk.io/test/npm/tag-cloud/badge.svg)](https://snyk.io/test/npm/tag-cloud)
+[![Typings](https://img.shields.io/npm/types/tag-cloud)](https://www.npmjs.org/package/tag-cloud)
+[![Downloads](https://img.shields.io/npm/dm/tag-cloud.svg)](https://www.npmjs.org/package/tag-cloud)
+[![Minzipped Size](https://img.shields.io/bundlephobia/minzip/tag-cloud)](https://bundlephobia.com/result?p=tag-cloud)
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/mrodrig/tag-cloud/automated-tests-workflow.yml)](https://github.com/mrodrig/tag-cloud/actions/workflows/automated-tests-workflow.yml)
+[![Coverage Status](https://coveralls.io/repos/github/mrodrig/tag-cloud/badge.svg?branch=main)](https://coveralls.io/github/mrodrig/tag-cloud?branch=main)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8c0cc3699d054fb77abe/maintainability)](https://codeclimate.com/github/mrodrig/tag-cloud/maintainability)
 
 ## Installation
 
@@ -23,10 +25,11 @@ let tagCloud = require('tag-cloud');
 
 ### API
 
-#### `tagCloud(array, callback, options)`
+#### `tagCloud(array, options)`
+
+Returns a `Promise<string>` that resolves with the HTML `string`.
 
 * `array` - An array of JSON documents of the form {tagName: <String>, count: <Number>}
-* `callback` - A function of the form `function (err, html)`; This function will receive any errors and/or the HTML generated.
 * `options` - (Optional) A JSON document specifying any of the following fields:
   * `randomize` - Boolean - Indicates whether the tags should be shuffled before the Tag Cloud is generated. [Default: true]
   * `numBuckets` - Number - Number of buckets to utilize [Default: 10]
@@ -56,51 +59,20 @@ let tags = [
 
 
 /* Option 1 */
-tagCloud.tagCloud(tags, function (err, data) {
-    console.log(err, data);
-});
+const html = await tagCloud.tagCloud(tags);
+console.log(html);
 
 /* Option 2 */
-tagCloud.tagCloud(tags, function (err, data) {
-    console.log(err, data);
-}, {
+const html = await tagCloud.tagCloud(tags, {
     randomize: false
 });
-
-let promise = require('bluebird');
-promise.promisifyAll(tagCloud);
-
-/* Option 3 */
-tagCloud.tagCloudAsync(tags)
-    .then( function (html) {
-        console.log(html);
-    })
-    .catch( function (err) {
-        console.log(err);
-    });
-
-/* Option 4 */
-tagCloud.tagCloudAsync(tags, {
-    randomize: false
-})
-    .then( function (html) {
-        console.log(html);
-    })
-    .catch( function (err) {
-        console.log(err);
-    });
+console.log(html);
 ```
 
 Options 1 and 2 above both print out:
 
 ```html
 null '<span class="bucket2" >js</span><span class="bucket4" >css</span><span class="bucket6" >less</span><span class="bucket0" >rest</span>'
-```
-
-Options 3 and 4 above both print out:
-
-```html
-<span class="bucket2" >js</span><span class="bucket4" >css</span><span class="bucket6" >less</span><span class="bucket0" >rest</span>
 ```
 
 The HTML can then be styled with CSS as such:
@@ -125,14 +97,6 @@ Your tag cloud can be styled to look like this:
 ![Tag Cloud Example](https://raw.githubusercontent.com/mrodrig/tag-cloud/master/demo/example.png)
 
 To see the HTML and CSS used to create this, please look at the [demo](https://github.com/mrodrig/tag-cloud/tree/master/demo).
-
-## Tests
-
-```bash
-$ npm test
-```
-
-_Note_: This requires `mocha`, `should`, `async`, and `underscore`.
 
 ## Features
 

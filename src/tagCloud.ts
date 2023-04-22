@@ -1,25 +1,7 @@
 'use strict';
+import {TagCloudOptions, TagCloudMetadata, TagCloudReplacement, AttributeVal} from './types';
 
-export interface TagCloudOptions {
-    randomize: boolean;
-    classPrefix: string;
-    additionalAttributes: Record<string, AttributeVal>;
-    replacements: TagCloudReplacement[];
-    numBuckets: number;
-    htmlTag: string;
-}
-
-export type AttributeVal = string | { encode: boolean, value: string };
-
-export interface TagCloudMetadata {
-    tagName: string;
-    count: number;
-}
-
-export interface TagCloudReplacement {
-    find: string;
-    replace: string;
-}
+export type * from './types';
 
 // Default options
 const defaultOptions: TagCloudOptions = {
@@ -40,7 +22,7 @@ const defaultOptions: TagCloudOptions = {
  */
 export async function tagCloud(array: TagCloudMetadata[], options?: TagCloudOptions) {
     // Merge the options with the defaults
-    const opts = Object.assign(options ?? {}, defaultOptions);
+    const opts = Object.assign(defaultOptions, options ?? {});
 
     // Get the min, max, and difference between them
     const counts = array.map(i => i.count),

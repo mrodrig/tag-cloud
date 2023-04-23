@@ -25,24 +25,35 @@ let tagCloud = require('tag-cloud');
 
 ### API
 
+#### Options Configuration
+* `randomize` - Boolean - Indicates whether the tags should be shuffled before the Tag Cloud is generated. [Default: true]
+* `numBuckets` - Number - Number of buckets to utilize [Default: 10]
+* `htmlTag` - String - The HTML tag name (ie. 'span') that you would like to be used. [Default: 'span']
+* `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
+* `replacements` - Array - An array of Documents which represent replacements that should occur on attributes.
+  * Each document should be of the form: `{ find: 'valueToBeReplaced', replace: 'valueToBeInserted' }`
+  * This allows additional custom values to be inserted into attributes for further customization (ie. specifying conditional filters in URLs)
+* `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
+  * If you would like to customize one of the fields to include the tag's text in the value, just use {{tag}} which will be replaced by the actual tag.
+      * Example: ```{href: 'http://google.com?q={{tag}}'}```
+  * If your tags include special characters (ie. C#) and you need to use the tag in a URL, then you can specify the value as an Object
+      * Example: ```{ href : { encode : true, value: 'http://google.com?q={{tag}}' } } ```
+
 #### `tagCloud(array, options)`
 
 Returns a `Promise<string>` that resolves with the HTML `string`.
 
 * `array` - An array of JSON documents of the form {tagName: <String>, count: <Number>}
-* `options` - (Optional) A JSON document specifying any of the following fields:
-  * `randomize` - Boolean - Indicates whether the tags should be shuffled before the Tag Cloud is generated. [Default: true]
-  * `numBuckets` - Number - Number of buckets to utilize [Default: 10]
-  * `htmlTag` - String - The HTML tag name (ie. 'span') that you would like to be used. [Default: 'span']
-  * `classPrefix` - String - Class prefix for the tag classes that are generated [Default: 'bucket']
-  * `replacements` - Array - An array of Documents which represent replacements that should occur on attributes.
-    * Each document should be of the form: `{ find: 'valueToBeReplaced', replace: 'valueToBeInserted' }`
-    * This allows additional custom values to be inserted into attributes for further customization (ie. specifying conditional filters in URLs)
-  * `additionalAttributes` - Document - A JSON document specifying any additional values that you would like to be added to the tag's HTML as an attribute [Default: {}]
-    * If you would like to customize one of the fields to include the tag's text in the value, just use {{tag}} which will be replaced by the actual tag.
-        * Example: ```{href: 'http://google.com?q={{tag}}'}```
-    * If your tags include special characters (ie. C#) and you need to use the tag in a URL, then you can specify the value as an Object
-        * Example: ```{ href : { encode : true, value: 'http://google.com?q={{tag}}' } } ```
+* `options` - (Optional) A JSON document specifying any of the options configuration object fields (shown above).
+
+#### `fromStrings(array, options)`
+
+Returns a `Promise<string>` that resolves with the HTML `string`.
+
+Convenience method that converts your array of strings into the format needed to generate the word/tag cloud using the main `tagCloud` method listed above.
+
+* `array` - An array of strings
+* `options` - (Optional) A JSON document specifying any of the options configuration object fields (shown above).
 
 ##### tagCloud Example:
 

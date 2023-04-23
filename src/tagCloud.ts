@@ -49,6 +49,25 @@ export async function tagCloud(array: TagCloudMetadata[], options?: TagCloudOpti
     return tags.join('');
 }
 
+export async function fromStrings(tags: string[], options?: TagCloudOptions) {
+    const tagsToCount: Record<string, number> = {};
+    
+    tags.forEach(tag => {
+        if (!tagsToCount[tag]) {
+            tagsToCount[tag] = 1;
+        } else {
+            tagsToCount[tag] += 1;
+        }
+    });
+
+    const tagsMetadata = Object.keys(tagsToCount).map(tagName => ({
+        tagName,
+        count: tagsToCount[tagName],
+    }));
+
+    return tagCloud(tagsMetadata, options);
+}
+
 /**
  * Generates an HTML String with the given data
  * @param tagType String tag type (ie. div, span, etc.)

@@ -1,6 +1,6 @@
 import assert from 'assert';
 import fs from 'fs';
-import { tagCloud } from '../src/tagCloud';
+import { tagCloud, fromStrings } from '../src/tagCloud';
 
 import jsonEmptyTags from './JSON/emptyTags.json';
 import jsonSingleTag from './JSON/singleTag.json';
@@ -27,12 +27,13 @@ let htmlEmptyTags      = '',
     htmlTenTags        = '',
     htmlTenTagsReplacements = '',
     htmlTwentyTags     = '',
+    htmlTwentyTagsUniq = '',
     htmlOneHundredTags = '';
 
-const tagCloudTests = function () {
+const tagCloudTests = () => {
     // We can check the HTML is equivalent since we specify randomize to be false
-    describe('tagCloud.js', function () {
-        describe('Options Specified', function () {
+    describe('tagCloud.js', () => {
+        describe('Options Specified', () => {
             it('should convert no tags to an empty string', async () => {
                 const html = await tagCloud(jsonEmptyTags, options);
                 assert.equal(html, htmlEmptyTags);
@@ -133,10 +134,24 @@ const tagCloudTests = function () {
             });
         });
     });
+
+    describe('fromStrings', () => {
+        it('should convert no tags to an empty string', async () => {
+            const html = await fromStrings([], options);
+            assert.equal(html, htmlEmptyTags);
+            assert.equal(html.length, 0);
+        });
+
+        it('should convert one hundred tags in the array to html', async () => {
+            const html = await fromStrings(jsonTwentyTags.map(t => t.tagName), options);
+            assert.equal(html, htmlTwentyTagsUniq);
+            assert.equal(html.length, htmlTwentyTagsUniq.length);
+        });
+    });
 };
 
 export function runTests () {
-    describe('tag-cloud Tests', function() {
+    describe('tag-cloud Tests', () => {
         before(async () => {
             // Read in the HTML test files
             try {
@@ -161,10 +176,14 @@ export function runTests () {
                         if (err) throw err;
                         htmlTwentyTags = data.toString();
                         htmlOneHundredTags = '';
-                        Array(5).fill(0).forEach(function() {
+                        Array(5).fill(0).forEach(() => {
                             htmlOneHundredTags += htmlTwentyTags;
                         });
                     }),
+                    fs.readFile('test/HTML/twentyTagsUnique.html', async (err, data) => {
+                        if (err) throw err;
+                        htmlTwentyTagsUniq = data.toString();
+                    })
                 ]);
             } catch (error) {
                 console.error(error);

@@ -1,8 +1,0 @@
-{
-  "randomize": true,
-  "classPrefix": "bucket",
-  "additionalAttributes": {},
-  "replacements": [],
-  "numBuckets": 10,
-  "htmlTag": "span"
-}

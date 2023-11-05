@@ -155,7 +155,7 @@ export function runTests () {
         before(async () => {
             // Read in the HTML test files
             try {
-                await Promise.all([
+                return await Promise.all([
                     fs.readFile('test/HTML/emptyTags.html', async (err, data) => {
                         if (err) throw err;
                         htmlEmptyTags = data.toString();
@@ -187,6 +187,7 @@ export function runTests () {
                 ]);
             } catch (error) {
                 console.error(error);
+                throw error;
             }
         });
 

@@ -22,15 +22,15 @@ const options = {
     htmlTag: 'span'
 };
 
-let htmlEmptyTags      = '',
-    htmlSingleTag      = '',
-    htmlTenTags        = '',
-    htmlTenTagsReplacements = '',
-    htmlTwentyTags     = '',
-    htmlTwentyTagsUniq = '',
-    htmlOneHundredTags = '';
-
-const tagCloudTests = () => {
+const tagCloudTests = ({
+    htmlEmptyTags,
+    htmlSingleTag,
+    htmlTenTags,
+    htmlTenTagsReplacements,
+    htmlTwentyTags,
+    htmlTwentyTagsUniq,
+    htmlOneHundredTags
+}: Record<string, string>) => {
     // We can check the HTML is equivalent since we specify randomize to be false
     describe('tagCloud.js', () => {
         describe('Options Specified', () => {
@@ -150,47 +150,29 @@ const tagCloudTests = () => {
     });
 };
 
+function initializeTestData() {
+    const testData = {
+        htmlEmptyTags: fs.readFileSync('test/HTML/emptyTags.html').toString(),
+        htmlSingleTag: fs.readFileSync('test/HTML/singleTag.html').toString(),
+        htmlTenTags: fs.readFileSync('test/HTML/tenTags.html').toString(),
+        htmlTenTagsReplacements: fs.readFileSync('test/HTML/tenTagsReplacements.html').toString(),
+        htmlTwentyTags: fs.readFileSync('test/HTML/twentyTags.html').toString(),
+        htmlOneHundredTags: '', // Generated below
+        htmlTwentyTagsUniq: fs.readFileSync('test/HTML/twentyTagsUnique.html').toString()
+    };
+
+    Array(5).fill(0).forEach(() => {
+        testData.htmlOneHundredTags += testData.htmlTwentyTags;
+    });
+
+    return testData;
+}
+
 export function runTests () {
     describe('tag-cloud Tests', () => {
-        before(async () => {
-            // Read in the HTML test files
-            try {
-                await Promise.all([
-                    fs.readFile('test/HTML/emptyTags.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlEmptyTags = data.toString();
-                    }),
-                    fs.readFile('test/HTML/singleTag.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlSingleTag = data.toString();
-                    }),
-                    fs.readFile('test/HTML/tenTags.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlTenTags = data.toString();
-                    }),
-                    fs.readFile('test/HTML/tenTagsReplacements.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlTenTagsReplacements = data.toString();
-                    }),
-                    fs.readFile('test/HTML/twentyTags.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlTwentyTags = data.toString();
-                        htmlOneHundredTags = '';
-                        Array(5).fill(0).forEach(() => {
-                            htmlOneHundredTags += htmlTwentyTags;
-                        });
-                    }),
-                    fs.readFile('test/HTML/twentyTagsUnique.html', async (err, data) => {
-                        if (err) throw err;
-                        htmlTwentyTagsUniq = data.toString();
-                    })
-                ]);
-            } catch (error) {
-                console.error(error);
-            }
-        });
+        const testData = initializeTestData();
 
         // Run the tests
-        tagCloudTests();
+        tagCloudTests(testData);
     });
 }
